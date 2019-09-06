@@ -14,9 +14,9 @@ export class DesignationdataService {
     SERVER_URL_ADD: string ='https://8bb9e835.ngrok.io/api/Settings/InsUpdateDesignation';
     // SERVER_URL3: string = 'https://8bb9e835.ngrok.io/api/Settings/GetDesignationsDetails?DesignationId={DesignationId}';
 
-    public getDesignations() {
-    return this.http.get(this.SERVER_URL);
-    }
+    // public getDesignations() {
+    // return this.http.get(this.SERVER_URL);
+    // }
 
     public getDesignationById(id) {
     return this.http.get(this.SERVER_URL+ id);

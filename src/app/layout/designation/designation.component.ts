@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Designation } from './designation';
 import { DesignationdataService } from './designationdata.service';
+import { CommonHttpService } from 'src/app/shared/common-http.service';
 
 @Component({
   selector: 'app-designation',
@@ -10,7 +11,7 @@ import { DesignationdataService } from './designationdata.service';
 })
 export class DesignationComponent implements OnInit {
 
-    constructor(private modalService: NgbModal,private _data:DesignationdataService) { }
+    constructor(private modalService: NgbModal,private _data:CommonHttpService) { }
     updatedItem: number;
     title = 'Designations';
     closeResult: string;
@@ -29,9 +30,9 @@ export class DesignationComponent implements OnInit {
       this._data.getDesignations().subscribe(
         (data:Designation[])=>{
           this.arrDesig=data;
+          console.log(this.arrDesig);
         }
         );
-        console.log(this.arrDesig);
     }
 
     onSearch(value) {
