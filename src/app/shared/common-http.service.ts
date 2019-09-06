@@ -8,8 +8,8 @@ import * as $ from 'jquery';
 export class CommonHttpService {
     constructor(private http: HttpClient,private AngHttp: Http) { }
 
-    SERVER_URL: string = 'https://8bb9e835.ngrok.io/api/Settings/GetDesignations';
-    SERVER_URL_ADD: string ='https://8bb9e835.ngrok.io/api/Settings/InsUpdateDesignation';
+    SERVER_URL: string = 'https://5044f2be.ngrok.io/api/Settings/GetDesignations';
+    SERVER_URL_ADD: string ='https://5044f2be.ngrok.io/api/Settings/InsUpdateDesignation';
 
   public getDesignations() {
     return this.http.get(this.SERVER_URL);
