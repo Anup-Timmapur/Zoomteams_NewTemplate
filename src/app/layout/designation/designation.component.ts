@@ -81,6 +81,7 @@ export class DesignationComponent implements OnInit {
       this._data.getDesignations();
     });
     }
+
     this.modalService.dismissAll();
     }
 }
