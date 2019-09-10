@@ -102,4 +102,4 @@ export class DesignationComponent implements OnInit {
     }
     this.modalService.dismissAll();
     }
-    }
+}
