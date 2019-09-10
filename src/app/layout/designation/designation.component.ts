@@ -80,8 +80,6 @@ export class DesignationComponent implements OnInit {
       alert("record added");
       this._data.getDesignations();
     });
-
-
     }
     this.modalService.dismissAll();
     }
