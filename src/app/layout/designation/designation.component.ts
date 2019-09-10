@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Designation } from './designation';
-import { DesignationdataService } from './designationdata.service';
 import { CommonHttpService } from 'src/app/shared/common-http.service';
 
 @Component({
@@ -39,7 +38,7 @@ export class DesignationComponent implements OnInit {
 
     console.log(value);
     if (value != '') {
-    this.arrDesig = this.arrDesig.filter(x => x.Name.startsWith(value));
+    this.arrDesig = this.arrDesig.filter(x => x.name.startsWith(value));
     }
     this.ngOnInit();
     }
@@ -57,8 +56,8 @@ export class DesignationComponent implements OnInit {
     console.log(content);
     this.selectedDesignationOption = passedTitle;
     // console.log(i);
-    this.name = this.arrDesig[i].Name;
-    this.description = this.arrDesig[i].Description;
+    this.name = this.arrDesig[i].name;
+    this.description = this.arrDesig[i].description;
     // console.log('updating');
     this.updatedItem = i;
     this.modalService.open(content);
@@ -96,6 +95,7 @@ export class DesignationComponent implements OnInit {
     this._data.addDesignation(f.value).subscribe((data: any) => {
       console.log(f.value);
       alert("record added");
+      this._data.getDesignations();
     });
 
 

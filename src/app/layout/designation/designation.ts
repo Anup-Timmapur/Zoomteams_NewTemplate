@@ -2,8 +2,8 @@ export class Designation {
     public constructor(
     public Id: number,
     public OrganizationId: number,
-    public Name: string,
-    public Description: string,
+    public name: string,
+    public description: string,
     public Isactive: boolean,
     public Createdby: number,
     public Createddate: Date,

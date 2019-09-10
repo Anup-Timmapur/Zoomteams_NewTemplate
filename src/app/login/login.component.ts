@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this._router.navigate(['/login']);
       this.loginHeaderText = "Member Login";
       this.showLoginUser = true;
-  
+
       this.upLoginformObj = {
         username: {
           required: "Please Enter Username",
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         },
         remember_me: false
       }
-  
+
       this.upForgotPwdForm = this.formBuilder.group(
         {
           Email: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]))
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         Password: { required: "Password can not be empty", minlength: "Password required minimum 6 characters.", },
         ConfirmPassword: { required: "Confirm Password can not be empty", minlength: "Password required minimum 6 characters.", },
       }
-  
+
       this.upLoginForm = this.formBuilder.group(
         {
           username: [null, Validators.required],
@@ -90,8 +90,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.showLoginUser = true;
       this.showForgotPwd = false;
     }
-  
-  
+
+
     hideall() {
     }
     showservicemodel(model) {
@@ -99,16 +99,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this[model] = true;
       model = true;
     }
-  
-  
+
+
     userLogin() {
       localStorage.setItem('isControlLogin', 'false');
       localStorage.setItem('isMasterLogin', 'false');
       localStorage.setItem('isUserLogin', 'true');
       this._router.navigate(['/dashboard']);
     }
-  
-  
+
+
     forgotPassword() {
       this.loginHeaderText = "Forgot Password";
       this.showForgotPwd = true;
@@ -127,7 +127,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       })
     }
     ngOnInit() {
-  
+
       // this.elementRef.nativeElement.focus();
       this.ActivatedRoute.queryParams.subscribe(queryParams => {
         // do something with the query params
@@ -206,7 +206,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
           return false;
         }
       }
-  
+
     }
     returnLoginForm() {
       this.loginHeaderText = "Member Login";
@@ -224,7 +224,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
     Login_up(upLoginForm) {
       if (upLoginForm.status == "INVALID") {
-  
+
         var errorMessage = this.MasterService.getFormErrorMessage(this.upLoginForm, this.upLoginformObj);
         this.msgs = [];
         this.msgs.push({ severity: 'error', summary: 'Error', detail: errorMessage });
@@ -238,8 +238,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
         pinId: null,
         isPin: false,
         isCpMp: false,
-      }     
-      
+      }
+
        {
         this.LocalStorageService.addItem(AppConstant.API_CONFIG.LOCALSTORAGE.ISLOGGEDIN, false);
         // this.upLoginMethod(loginFormdata)
@@ -266,9 +266,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
                   }
                   this.LocalStorageService.addItem(AppConstant.API_CONFIG.LOCALSTORAGE.USERINFO, userinfo);
                   this.LocalStorageService.addItem(AppConstant.API_CONFIG.LOCALSTORAGE.COMPANYINFO, companyinfo);
-                  
+
                   if (userinfo.role == "up_general" || userinfo.role == "up_user" || userinfo.role == "up_manager") {
-  
+
                     this._router.navigate(['/dashboard'], { queryParams: this.queryparams });
                   }
                   else {
@@ -285,7 +285,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 this.messageService.add({ severity: 'error', summary: 'Error', detail: "Incorrect Username/Password." });
                 return false;
               }
-  
+
             }
             else {
               this.disableLoginSubmit = false;
@@ -301,8 +301,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
     public getUserInfoData() {
       this.CommonAppService.getUserInfo("").then((res) => {
-        if (res) {     
-  
+        if (res) {
+
           this.LocalStorageService.addItem(AppConstant.API_CONFIG.LOCALSTORAGE.USERINFO, res);
           if (res.role == "mp_user")
             setTimeout(() => {
@@ -312,7 +312,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: "You are not authorized" });
           }
         }
-  
+
       }).catch(e => {
       });
     }
@@ -329,7 +329,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
     rememberMe() {
       if ($('#remember_me').is(':checked')) {
-  
+
         this.CookieService.set('u_rmp', this.upLoginForm.controls["remember_me"].value, 30);
         this.CookieService.set('u_u', this.upLoginForm.controls["username"].value, 30);
         // this.CookieService.set('u_p',this.upLoginForm.controls["password"].value,30);
