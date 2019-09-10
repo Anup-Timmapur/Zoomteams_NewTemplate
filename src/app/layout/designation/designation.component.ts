@@ -75,23 +75,6 @@ export class DesignationComponent implements OnInit {
 
     onFormSubmit(f) {
     if (this.selectedDesignationOption == 'Add') {
-    // console.log(this.name);
-    // this.arrDesig.push();
-    // } else {
-    // let data = this.updatedItem;
-    // console.log(data);
-    // alert(this.arrDesig.length);
-    // for (let i = 0; i < this.arrDesig.length; i++) {
-    // if (i == data) {
-    // this.arrDesig[i].Name = this.name;
-    // this.arrDesig[i].Description = this.description ;
-    // console.log(this.arrDesig);
-
-    // // To initialize the fields with empty data
-    // this.name = '';
-    // this.description = '';
-    // }
-    // }
     this._data.addDesignation(f.value).subscribe((data: any) => {
       console.log(f.value);
       alert("record added");
